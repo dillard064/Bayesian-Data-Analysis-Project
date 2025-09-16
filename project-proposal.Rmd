@@ -1,0 +1,66 @@
+---
+title: "STAT4116: Project Proposal"
+author: "Jiazhe Lin (u7487349)"
+output:
+  pdf_document:
+    number_sections: true
+bibliography: ref.bib
+csl: apa.csl   
+header-includes:
+  - |
+    \usepackage{fancyhdr}
+    \pagestyle{fancy}
+    \fancyhf{} % clear all header and footer fields
+    \fancyhead[L]{STAT4116: Project Proposal}
+    \fancyhead[R]{u7487349}
+    \fancyfoot[C]{\thepage}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r library, echo=FALSE, results='hide', warning=FALSE, message=FALSE}
+library(dplyr)
+library(tidyverse)
+library(tidyr)
+library(BGLR)
+library(AGHmatrix)
+```
+
+# Introduction
+
+```{r dataset}
+load("u7487349-STAT4116-Final-Project/data/met_pheno.rda")
+load("u7487349-STAT4116-Final-Project/data/met_pedigree.rda")
+load("u7487349-STAT4116-Final-Project/data/met_marker.rda")
+```
+
+The selective breeding of crops is an ancient practice that dates back to the emergence of human civilisation. Following the industrial revolution and the rising demand for agronomic production, modern plant breeding began to leverage statistical tools to analyse cultivars for desired traits. The abundance of data in agricultural statistics in turn gave rise to numerous fundamental statistical theories, such as the analysis of variance (ANOVA) (reference).  
+
+A key aspect of the plant breeding cycle involves comparing varieties across different trials, which makes it possible to assess plant performance under varying soil, water, and other environmental conditions. The goal of this aggregated analysis is, first, to distinguish true genotypic performance from environmental influences, and second, to evaluate the stability of genotype performance across conditions.  
+
+With the objective of multi-environment trials relatively straightforward, the key challenge lies in modeling the interaction between genotype and environment effects, a phenomenon referred to as the G $\times$ E effect. One of the modern approach is to model some trait response as a linear mixed model with fixed environmental effect and random genotype, design and interaction, as well as auto-correlated residual errors to account for spatial correlation. 
+
+
+```{r eda}
+dim(met_marker)         # matrix (need to minus 1 for the columns)
+summary(met_pedigree)
+summary(met_pheno)
+
+met_pheno %>%
+  count(env, name = "n_plots")
+```
+
+# Research Question
+
+
+# Proposed Methodology
+In this assignment, we aim to provide comprehensive comparison between the estimation accuracy between the classical linear mixed model, which can be written as a Bayesian posterior model and the Bayesian Lasso method. 
+
+
+
+
+
+\newpage
+# Reference
