@@ -12,7 +12,7 @@ header-includes:
     \pagestyle{fancy}
     \fancyhf{} % clear all header and footer fields
     \fancyhead[L]{STAT4116: Project Proposal}
-    \fancyhead[R]{u7487349}
+    \fancyhead[R]{Jiazhe Lin (u7487349)}
     \fancyfoot[C]{\thepage}
 ---
 
@@ -30,18 +30,23 @@ library(AGHmatrix)
 
 # Introduction
 
+The selective breeding of crops is an ancient practice that dates back to the emergence of human civilisation. Following the industrial revolution and the rising demand for agronomic production, modern plant breeding began to leverage statistical tools to analyse cultivars for desired traits. The abundance of data in agricultural statistics in turn gave rise to numerous fundamental statistical theories, such as the analysis of variance (ANOVA) (reference).  
+
+A key aspect of the plant breeding cycle involves comparing varieties across different trials, which makes it possible to assess plant performance under varying soil, water, and other environmental conditions (reference). The goal of this aggregated analysis is, first, to distinguish true genotypic performance from environmental influences, and second, to evaluate the stability of genotype performance across conditions (reference).  
+
+With the objective of multi-environment trials relatively straightforward, the key challenge lies in modeling the interaction between genotype and environment effects, a phenomenon referred to as the G $\times$ E effect (reference). One modern approach is to model trait responses using a linear mixed model, incorporating fixed environmental effects and random genotype, design, and interaction effects, along with auto-correlated residual errors to account for spatial correlation (reference).  
+
+In this assignment, we aim to provide a comprehensive comparison of estimation accuracy between the frequentist linear mixed model and its Bayesian counterpart, formulated as a posterior model with appropriate prior assumptions. We will begin by examining a simple case that uses phenotype data only, with genotype, environment and their interaction effect. From there, we will gradually explore the inclusion of experimental design variables such as row and column effects, auto-correlated residual errors, and, if time permits, genetic and marker information within the Bayesian data analytic framework introduced in the course. 
+
+# Proposed Research Question
+This project sets out to investigate several key research questions. First, we ask how a Bayesian framework can be applied to analyse the dataset and how its performance compares with the traditional frequentist approach. Building on this, we explore the incorporation of different variables into the Bayesian model, examining how alternative prior assumptions influence inference and prediction. Finally, if there's time we extend the analysis to consider the inclusion of gene marker data and spatial correlation structures, evaluating how these additional sources of information can be effectively modeled within a Bayesian framework to improve accuracy and interpretability.
+
+# Dataset Description
 ```{r dataset}
 load("u7487349-STAT4116-Final-Project/data/met_pheno.rda")
 load("u7487349-STAT4116-Final-Project/data/met_pedigree.rda")
 load("u7487349-STAT4116-Final-Project/data/met_marker.rda")
 ```
-
-The selective breeding of crops is an ancient practice that dates back to the emergence of human civilisation. Following the industrial revolution and the rising demand for agronomic production, modern plant breeding began to leverage statistical tools to analyse cultivars for desired traits. The abundance of data in agricultural statistics in turn gave rise to numerous fundamental statistical theories, such as the analysis of variance (ANOVA) (reference).  
-
-A key aspect of the plant breeding cycle involves comparing varieties across different trials, which makes it possible to assess plant performance under varying soil, water, and other environmental conditions. The goal of this aggregated analysis is, first, to distinguish true genotypic performance from environmental influences, and second, to evaluate the stability of genotype performance across conditions.  
-
-With the objective of multi-environment trials relatively straightforward, the key challenge lies in modeling the interaction between genotype and environment effects, a phenomenon referred to as the G $\times$ E effect. One of the modern approach is to model some trait response as a linear mixed model with fixed environmental effect and random genotype, design and interaction, as well as auto-correlated residual errors to account for spatial correlation. 
-
 
 ```{r eda}
 dim(met_marker)         # matrix (need to minus 1 for the columns)
@@ -52,14 +57,14 @@ met_pheno %>%
   count(env, name = "n_plots")
 ```
 
-# Research Question
+- What data set are you using?
+- What variables in the data set will you use?
 
 
-# Proposed Methodology
-In this assignment, we aim to provide comprehensive comparison between the estimation accuracy between the classical linear mixed model, which can be written as a Bayesian posterior model and the Bayesian Lasso method. 
-
-
-
+# Preliminary Analysis
+- What are your initial thoughts on appropriate models/distributions?
+- What questions and/or concerns do you have about the project?
+- What metrics do we use for comparison? 
 
 
 \newpage
